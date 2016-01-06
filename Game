@@ -1,0 +1,36 @@
+import java.util.Scanner;
+import java.util.Random;
+public class Guess
+{
+   public static void main (String[] args)
+   {
+       int guessNum, guess;
+       int num = 1;
+       int high = 0;
+       int low = 0;
+       
+       Scanner scan = new Scanner(System.in);
+       Random rand = new Random();
+       
+       guessNum = rand.nextInt(10);
+       System.out.println("Please input your first guess.");
+       guess = scan.nextInt();
+       
+       while(guess != guessNum)
+       {
+           System.out.println("Your guess is wrong. Try again.");
+           if(guess > guessNum){
+               System.out.println("Here's a hint: your guess was too high.");
+               high++;
+           }
+           else if(guess < guessNum) {
+               System.out.println("Here's a hint: your guess was too low.");
+               low++;
+           }
+           guess = scan.nextInt();
+           num++;
+       }
+       
+       System.out.println("Congratulations. You actually guessed correctly. It only took you " + num + " guesses. \nYou had " + high + " guesses too high and " + low + " guesses too low.\nYou may play again if you wish.");
+   }
+}
